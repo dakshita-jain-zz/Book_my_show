@@ -8,10 +8,10 @@ class SessionsController < ApplicationController
          session[:user_id] = user.id
          redirect_to url_for(:controller => :home, :action => :index)
       else
-         redirect_to login_url,notice:"Invalid user Please Check the Username or Password"
+         redirect_to login_url,notice:"Invalid user credentials !Please Check the Username or Password"
       end
     else
-      redirect_to new_signup_path,notice:"Not an existing user .please register and login "
+      redirect_to new_signup_path,notice:"Not an existing user !! Please register and login "
     end
   end
   def new

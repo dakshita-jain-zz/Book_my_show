@@ -7,7 +7,8 @@ class CreateBookings < ActiveRecord::Migration
       t.references :user, foreign_key: true
       t.integer :ticket_booked
       t.string :payment_method
-
+      t.integer :total_amount
+      t.datetime :booking_datetime
       t.timestamps null: false
     end
   end

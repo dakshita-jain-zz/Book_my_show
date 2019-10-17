@@ -14,12 +14,14 @@
 ActiveRecord::Schema.define(version: 20191014134639) do
 
   create_table "bookings", force: :cascade do |t|
-    t.integer  "show_id",        limit: 4
-    t.integer  "user_id",        limit: 4
-    t.integer  "ticket_booked",  limit: 4
-    t.string   "payment_method", limit: 255
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.integer  "show_id",          limit: 4
+    t.integer  "user_id",          limit: 4
+    t.integer  "ticket_booked",    limit: 4
+    t.string   "payment_method",   limit: 255
+    t.integer  "total_amount",     limit: 4
+    t.datetime "booking_datetime"
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
   end
 
   add_index "bookings", ["show_id"], name: "fk_rails_f6de0bbe34", using: :btree
@@ -30,6 +32,7 @@ ActiveRecord::Schema.define(version: 20191014134639) do
     t.string   "actor",        limit: 255
     t.string   "director",     limit: 255
     t.date     "release_date"
+    t.integer  "rating",       limit: 4
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
   end
@@ -37,9 +40,9 @@ ActiveRecord::Schema.define(version: 20191014134639) do
   create_table "shows", force: :cascade do |t|
     t.integer  "movie_id",         limit: 4
     t.string   "venue",            limit: 255
-    t.time     "timing"
-    t.date     "date"
+    t.datetime "showtime"
     t.integer  "ticket_available", limit: 4
+    t.integer  "price",            limit: 4
     t.datetime "created_at",                   null: false
     t.datetime "updated_at",                   null: false
   end

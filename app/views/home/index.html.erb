@@ -1,14 +1,13 @@
 <h1>Listing shows</h1>
 <p id="notice"><%= notice %></p>
-<table>
+<table style="border-spacing: 35px; text-align: center; font-size: x-large;">
   <thead>
     <tr>
       <th>Movie</th>
       <th>Venue</th>
-      <th>Timing</th>
-      <th>Date</th>
+      <th>Date&Timing</th>
       <th>Ticket_Available</th>
-      <th colspan="3"></th>
+      <th>Price/Ticket</th>
     </tr>
   </thead>
 
@@ -17,9 +16,9 @@
       <tr>
         <td><%= show.movie.name %></td>
         <td><%= show.venue %></td>
-        <td><%= show.timing %></td>
-        <td><%= show.date %></td>
+        <td><%= show.showtime %></td>
         <td><%= show.ticket_available %></td>
+        <td><%= show.price%></td>
         <td><%= link_to 'book', new_show_booking_path(show_id: show.id) %></td>
       </tr>
     <% end %>

@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
     if user
       user.make_current
     else
-      redirect_to login_url, notice: "You are an authprized user please login in"
+      redirect_to login_url, notice: "Your session expired! Please login in"
     end
   end
 

@@ -7,6 +7,8 @@ class BookingsController < ApplicationController
     @booking = current_user.bookings.new(booking_params)
     @booking.show_id = params[:show_id]
     if @booking.ticket_booked < @booking.show.ticket_available
+      @booking.total_amount=(@booking.ticket_booked)*(@booking.show.price)
+      @booking.booking_datetime=Time.current
       if @booking.save
         flash[:notice] ="Booking Successfull !!!"
         redirect_to show_booking_path(@booking.show_id, @booking.id)

@@ -6,6 +6,7 @@ class CreateShows < ActiveRecord::Migration
       t.string :venue
       t.datetime :showtime
       t.integer :ticket_available
+      t.integer :price
       t.timestamps null: false
     end
   end
