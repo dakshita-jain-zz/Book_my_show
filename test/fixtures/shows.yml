@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  movie_id: 1
+  movie_id: 
+  venue: MyString
+  timing: 2019-10-14 19:08:54
+  date: 2019-10-14
+  ticket_available: 1
+
+two:
+  movie_id: 1
+  movie_id: 
+  venue: MyString
+  timing: 2019-10-14 19:08:54
+  date: 2019-10-14
+  ticket_available: 1

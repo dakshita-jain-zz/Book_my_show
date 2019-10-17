@@ -1,0 +1,19 @@
+<%= form_for(@booking, url: show_bookings_path(@booking.show_id), method: :post) do |f| %>
+
+<div class="field">
+
+  Movie name:<input type="text" value=<%=@booking.show.movie.name%> readonly>
+  User Name:<input type="text" value=<%=@booking.user.name%> readonly>
+</div>
+<div class="field">
+  <%= f.label :ticket_booked %><br>
+  <%= f.number_field :ticket_booked %>
+</div>
+<div class="field">
+  <%= f.label :payment_method %><br>
+  <%= f.text_field :payment_method %>
+</div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

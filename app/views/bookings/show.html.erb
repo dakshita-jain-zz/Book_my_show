@@ -1,0 +1,22 @@
+<p id="notice"><%= notice %></p>
+<p>
+  <strong>Movie Name:</strong>
+  <%=@booking.show.movie.name%>
+</p>
+
+<p>
+  <strong>User Name :</strong>
+  <%=@booking.user.name %>
+</p>
+
+<p>
+  <strong>No of tickets booked</strong>
+  <%= @booking.ticket_booked %>
+</p>
+
+<p>
+  <strong>Payment Mode</strong>
+  <%= @booking.payment_method %>
+</p>
+
+<%= link_to 'Back', home_index_path %>
