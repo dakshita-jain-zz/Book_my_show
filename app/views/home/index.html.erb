@@ -1,5 +1,6 @@
 <h1>Listing shows</h1>
 <p id="notice"><%= notice %></p>
+<%= link_to 'Booking history', ticket_history_index_path %>
 <table style="border-spacing: 35px; text-align: center; font-size: x-large;">
   <thead>
     <tr>
@@ -16,7 +17,7 @@
       <tr>
         <td><%= show.movie.name %></td>
         <td><%= show.venue %></td>
-        <td><%= show.showtime %></td>
+        <td><%= show.showtime.to_formatted_s(:long_ordinal) %></td>
         <td><%= show.ticket_available %></td>
         <td><%= show.price%></td>
         <td><%= link_to 'book', new_show_booking_path(show_id: show.id) %></td>

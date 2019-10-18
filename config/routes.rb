@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   root 'sessions#new'
   resources :signups, only: [:new,:create]
 
@@ -6,7 +7,7 @@ Rails.application.routes.draw do
       resources :bookings
   end
   get 'home/index'
-
+  resources :ticket_history, only: [:index]
   controller :sessions do
     get 'login' => :new
     post 'login' => :create
