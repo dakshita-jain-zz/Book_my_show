@@ -1,0 +1,29 @@
+<h1>Listing Tickets Booked for each shows</h1>
+<p id="notice"><%= notice %></p>
+<table style="border-spacing: 35px; text-align: center; font-size: x-large;">
+  <thead>
+    <tr>
+      <th>Movie</th>
+      <th>Venue</th>
+      <th>Date&Timing</th>
+      <th>Ticket_booked</th>
+      <th>Total_Amount</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @bookings.each do |booking| %>
+      <tr>
+        <td><%=@movie.name %></td>
+        <td><%=booking.show.venue %></td>
+        <td><%=booking.show.showtime.to_formatted_s(:long_ordinal) %></td>
+        <td><%=booking.ticket_booked %></td>
+        <td><%= booking.total_amount %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<%= link_to 'Back', admin_index_path %>
+<%= link_to 'Logout', logout_path, method: :delete %>

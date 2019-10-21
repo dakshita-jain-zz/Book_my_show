@@ -1,0 +1,26 @@
+<%= form_for(@movie, url: movie_path, method: :put) do |f| %>
+
+<div class="field">
+  <%= f.label :name %><br>
+  <%= f.text_field :name %>
+</div>
+<div class="field">
+  <%= f.label :actor %><br>
+  <%= f.text_field :actor %>
+</div>
+<div class="field">
+  <%= f.label :director%><br>
+  <%= f.text_field :director %>
+</div>
+<div class="field">
+  <%= f.label :release_date%><br>
+  <%= f.date_field :release_date %>
+</div>
+<div class="field">
+  <%= f.label :rating%><br>
+  <%= f.number_field :rating %>
+</div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

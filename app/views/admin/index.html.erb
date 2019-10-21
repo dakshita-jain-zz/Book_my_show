@@ -1,2 +1,28 @@
-<h1>Admin#index</h1>
-<p>Find me in app/views/admin/index.html.erb</p>
+<p id="notice"><%= notice %></p>
+
+<h1>Listing All Movies currently showings!</h1>
+<table style="border-spacing: 35px; text-align: center; font-size: x-large;">
+  <thead>
+    <tr>
+      <th>Movie Name</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @movielist.each do |movie| %>
+      <tr>
+        <td><%= link_to movie.name,show_path(:id =>movie.id)%></td>
+        <td><%= movie.actor %></td>
+        <td><%= movie.rating %></td>
+        <td><%= movie.release_date.to_formatted_s(:long_ordinal) %></td>
+        <td><%= link_to 'Ticket_History', bookings_movie_path(movie.id)  %></td>
+        <td><%= link_to 'Edit Movie', edit_movie_path(movie.id)  %></td>
+        <td><%= link_to 'Add Shows',new_show_path(:id =>movie.id)%></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<%= link_to 'Add Movies',new_movie_path %>
+<%= link_to 'Logout', logout_path, method: :delete %>

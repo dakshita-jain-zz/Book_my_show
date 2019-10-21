@@ -5,7 +5,7 @@ class BookingsController < ApplicationController
   def create
 
     @booking = current_user.bookings.new(booking_params)
-    @booking.show_id = params[:show_id]
+    @booking.show_id = params[:show_id] 
     if @booking.ticket_booked < @booking.show.ticket_available
       @booking.total_amount=(@booking.ticket_booked)*(@booking.show.price)
       @booking.booking_datetime=Time.current
@@ -29,7 +29,7 @@ class BookingsController < ApplicationController
   private
 
   def booking_params
-    params.require(:booking).permit(:ticket_booked,:payment_method)
+    params.require(:booking).permit(:ticket_booked, :payment_method)
   end
 
 

@@ -1,0 +1,27 @@
+<%= form_for(@show, url: shows_path, method: :post) do |f| %>
+<div class="field">
+  <%= f.label :movie_id %><br>
+  <%= f.hidden_field :movie_id %>
+</div>
+
+<div class="field">
+  <%= f.label :venue %><br>
+  <%= f.text_field :venue %>
+</div>
+<div class="field">
+  <%= f.label :showtime %><br>
+  <%= f.time_field :showtime %>
+</div>
+
+<div class="field">
+  <%= f.label :ticket_available%><br>
+  <%= f.number_field :ticket_available %>
+</div>
+<div class="field">
+  <%= f.label :price%><br>
+  <%= f.number_field :price %>
+</div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

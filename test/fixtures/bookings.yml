@@ -2,16 +2,16 @@
 
 one:
   show_id: 1
-  show_id: 
+  show_id:
   user_id: 1
-  user_id: 
-  ticket_booked: 
+  user_id:
+  ticket_booked:
   payment_method: MyString
 
 two:
   show_id: 1
-  show_id: 
+  show_id:
   user_id: 1
-  user_id: 
-  ticket_booked: 
+  user_id:
+  ticket_booked:
   payment_method: MyString

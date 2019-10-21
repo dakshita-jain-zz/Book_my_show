@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
       if user.authenticate(params[:password])
          flash[:notice]="Logged in Successfuly"
          session[:user_id] = user.id
-         redirect_to url_for(:controller => :home, :action => :index)
+         redirect_to redirect_url(user)
       else
          redirect_to login_url,notice:"Invalid user credentials !Please Check the Username or Password"
       end
@@ -21,4 +21,13 @@ class SessionsController < ApplicationController
     session[:user_id]=nil
   end
 
+  private
+
+  def redirect_url(user)
+    if user.email=='admin@gmail.com'
+      url_for(:controller => :admin, :action => :index)
+    else
+      url_for(:controller => :home, :action => :index)
+    end
+  end
 end

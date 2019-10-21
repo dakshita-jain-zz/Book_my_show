@@ -4,4 +4,5 @@ class Show < ActiveRecord::Base
   validates :price,  numericality: {greater_than_or_equal_to: 1}, presence: true
   validates :venue, presence: true,length: { maximum: 50 }
   validates :showtime, presence: true
+  validates :movie_id, presence: true
 end
