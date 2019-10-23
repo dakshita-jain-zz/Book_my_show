@@ -5,6 +5,7 @@ class SessionsController < ApplicationController
     if user
       if user.authenticate(params[:password])
          flash[:notice]="Logged in Successfuly"
+         user.make_current
          session[:user_id] = user.id
          redirect_to redirect_url(user)
       else
@@ -18,7 +19,9 @@ class SessionsController < ApplicationController
   end
 
   def destroy
+    User.reset_current
     session[:user_id]=nil
+    redirect_to root_path
   end
 
   private

@@ -1,5 +1,15 @@
 <%= form_for(@booking, url: show_bookings_path(@booking.show_id), method: :post) do |f| %>
+<% if @booking.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@booking.errors.count, "error") %> prohibited this task from being saved:</h2>
 
+      <ul>
+      <% @booking.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
 <div class="field">
 
   Movie name:<input type="text" value=<%=@booking.show.movie.name%> readonly>

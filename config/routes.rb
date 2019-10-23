@@ -1,12 +1,12 @@
 Rails.application.routes.draw do
-  root 'sessions#new'
+  root 'home#homepage'
   resources :movies, only: [:new, :create, :edit,:update] do
     member do
       get :bookings
     end
   end
   resources :admin,only: [:index]
-  resources :signups, only: [:new,:create]
+  resources :signups, only: [:new,:create,:edit,:update]
 
   resources :shows, only: [:new,:create,:edit,:update,:show] do
       resources :bookings

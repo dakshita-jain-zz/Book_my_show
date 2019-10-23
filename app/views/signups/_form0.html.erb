@@ -1,4 +1,4 @@
-<%= form_for(@user, url: signups_url, method: :post) do |f| %>
+<%= form_for(@user, url: signup_url, method: :patch) do |f| %>
 <% if @user.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@user.errors.count, "error") %> prohibited this task from being saved:</h2>

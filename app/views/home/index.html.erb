@@ -1,6 +1,10 @@
 <h1>Listing shows</h1>
-<p id="notice"><%= notice %></p>
+<% if @user.photo%>
+  <%= image_tag @user.photo.url(:small) %>
+  <%end%>
 <%= link_to 'Booking history', ticket_history_index_path %>
+<div>
+</div>
 <table style="border-spacing: 35px; text-align: center; font-size: x-large;">
   <thead>
     <tr>
@@ -28,5 +32,3 @@
 </table>
 
 <br>
-
-<%= link_to 'Logout', logout_path, method: :delete %>

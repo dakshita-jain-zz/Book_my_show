@@ -1,0 +1,12 @@
+1. callbacks-Done
+2. getter methods and setter methods-Done
+3. prevents_from_forgery-Done
+4. filter_by Movies-Done
+5. Try to add Avatar for user-Done
+
+UI -
+
+1. Sticky header <logo, home, movies ,profile, logout> - HTML CSS Bootstrap-Done
+2. Booking template - HTML CSS
+3. User sign up form - HTML form with validation with jQuery (mandatory)
+4. Admin home page and other important pages HTML CSS

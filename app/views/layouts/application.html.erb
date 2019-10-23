@@ -2,13 +2,55 @@
 <html>
 <head>
   <title>BookShowApp</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag    'application', media: 'all'%>
+  <%= javascript_include_tag 'application'%>
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <header class="navbar navbar-fixed-top navbar-inverse">
+    <ul class="nav navbar-nav">
+      <p class="navbar-text">BOOK_MY_SHOW_APP</p>
+      <% if User.current %>
+        <% if User.current.admin? %>
+        <li><%= link_to 'Home',admin_index_path %></li>
+        <% else %>
+        <li><%= link_to 'Home',home_index_path %></li>
+        <li><%= link_to 'Edit profile',edit_signup_path(User.current.id) %></li>
+        <% end %>
 
-<%= yield %>
+      <% end %>
+    </ul>
 
+    <ul class="nav navbar-nav navbar-right">
+      <% if User.current %>
+        <li class="active"><%= link_to 'Logout',logout_path ,method: :delete %></li>
+      <% else %>
+        <li class="active"><%= link_to 'Sign In', login_path %></li>
+      <% end %>
+    </ul>
+  </header>
+  <div class="container notice-alert">
+      <% if notice %>
+        <div class="alert alert-light alert-dismissible fade in">
+          <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+          <strong class="text-center"><%= notice %></strong>
+        </div>
+      <% end %>
+
+      <% if alert %>
+        <div class="alert alert-light alert-dismissible">
+          <strong class="text-center"><%= alert %></strong>
+        </div>
+      <% end %>
+    </div>
+  <div class="container">
+    <%= yield %>
+  </div>
+  <footer class="footer">
+<small>
+  <a href="http://railstutorial.org/">Rails Tutorial</a>
+  by Michael Hartl
+</small>
+  </footer>
 </body>
 </html>

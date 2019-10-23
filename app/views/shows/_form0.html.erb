@@ -1,5 +1,15 @@
 <%= form_for(@show, url: show_path(@show.id), method: :put) do |f| %>
+<% if @show.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@show.errors.count, "error") %> prohibited this task from being saved:</h2>
 
+      <ul>
+      <% @show.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
 <div class="field">
   <%= f.label :venue %><br>
   <%= f.text_field :venue %>

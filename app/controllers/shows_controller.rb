@@ -6,7 +6,6 @@ class ShowsController < ApplicationController
   def create
     @show= Show.new(shows_params)
     respond_to do |format|
-      debugger
       if @show.save
         format.html { redirect_to admin_index_path, notice: 'show was successfully created.' }# get call to user which means user/index
       else
