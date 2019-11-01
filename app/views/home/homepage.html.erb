@@ -1,6 +1,9 @@
-<h1>Welcome to Book My Show App</h1>
-<h2>Listing The Current movies</h2>
-<% @movielist.each do |movie| %>
-        <h1 style="color:red;text-align:centre"><%= movie.name %></h1>
+<div><h1 style="color:red;padding:20px black;font-family:cursive">Welcome to Book My Show App<!/h1><div>
+<div>
+  <h2 style="color:blue;text-align:centre;padding:20px">Listing The Current movies!!!</h2>
+  </div>
+<div><% @movielist.each do |movie| %>
+        <h2 style="color:red;text-align:centre;border:2px solid black;width:100%"><%= movie.name %></h2>
 <% end %>
-<h2 style="color:powderblue;text-align:centre;font-size:160%;">Please Sign In to view the show for each movie and book the tickets!</h2>
+<div>
+<div><p style="color:green;text-align:centre;font-size:large;">Please <span style="color:black">Sign In</span> to view the show for each movie and book the tickets!</p><div>

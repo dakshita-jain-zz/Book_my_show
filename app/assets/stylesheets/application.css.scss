@@ -44,6 +44,7 @@
  header a {
    color: #fff !important;
  }
+
  footer {
    margin-top: 45px;
    padding-top: 5px;
@@ -128,3 +129,6 @@ ul li{
    padding-right: 20px;
    text-align: center;
  }
+ #mytable,td{
+    width:80%; padding:5px; border:1px solid  black ;
+}

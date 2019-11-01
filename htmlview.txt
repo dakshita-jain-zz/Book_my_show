@@ -1,0 +1,160 @@
+
+<!-- <h1>Listing shows</h1>
+<% if current_user.photo%>
+  <%= image_tag current_user.photo.url(:small) %>
+  <%end%>
+<%= link_to 'Booking history', ticket_history_index_path %>
+<div>
+</div>
+<table style="border-spacing: 35px; text-align: center; font-size: x-large;">
+  <thead>
+    <tr>
+      <th>Movie</th>
+      <th>Venue</th>
+      <th>Date&Timing</th>
+      <th>Ticket_Available</th>
+      <th>Price/Ticket</th>
+    </tr>
+  </thead>
+
+  <!-- <tbody>
+    <% @shows.each do |show| %>
+      <tr>
+        <% debugger unless show.movie%>
+        <td><%= show.movie.name %></td>
+        <td><%= show.venue %></td>
+        <td><%= show.showtime.to_formatted_s(:long_ordinal) %></td>
+        <td><%= show.ticket_available %></td>
+        <td><%= show.price%></td>
+        <td><%= link_to 'book', new_show_booking_path(show_id: show.id) %></td>
+      </tr>
+    <% end %>
+  </tbody> -->
+</table>
+
+
+<!-- <h1>Listing Shows</h1>
+<table style="border-spacing: 35px; text-align: center; font-size: x-large;">
+  <thead>
+    <tr>
+      <th>Venue</th>
+      <th>Date&Timing</th>
+      <th>Ticket_Available</th>
+      <th>Price/Ticket</th>
+    </tr>
+  </thead>
+  <tbody>
+    <fieldset>
+      <td><p id="Venue"></p></td>
+      <td><p id="Showtime"></p></td>
+      <td><p id="Ticket"></p></td>
+      <td><p id="Price"></p></td>
+    </fieldset>
+  </tbody>
+</table>
+<script>
+async function loadText(fname) {
+	var response = await fetch(fname)
+  var j =  await response.json()
+  for (var i = 0; i < j.length; i++){
+  	document.getElementById('Venue').innerHTML = j[i].venue
+  	document.getElementById('Showtime').innerHTML = j[i].ticket_available
+    document.getElementById('Ticket').innerHTML = j[i].ticket_available
+    document.getElementById('Price').innerHTML = j[i].price
+
+}
+}
+
+loadText("http://localhost:3000/home/index.json")
+</script> -->
+<!-- <div id="div1">
+</div>
+<script>
+  async function loadText(fname) {
+  	var response = await fetch(fname)
+    var obj =  await response.json()
+    var tbl=$("<table/>").attr("id","mytable1")
+    var r="<tr>";
+    var th="<th>Venue</th>";
+    var th1="<th>Showtime</th>";
+    var th2="<th>Tickets Available</th>";
+    var th3="<th>Price/Ticket</th></tr>";
+    $("#div1").append(tbl);
+    $("#mytable1").append(r+th+th1+th2+th3);
+    for(var i=0;i<obj.length;i++)
+    {
+      var tr="<tr>";
+        var td1="<td>"+obj[i]["venue"]+"</td>";
+            var td2="<td>"+obj[i]["showtime"]+"</td>";
+            var td3="<td>"+obj[i]["ticket_available"]+"</td>";
+            var td4="<td>"+obj[i]["price"]+"</td></tr>";
+            $("#mytable1").append(tr+td1+td2+td3+td4);
+
+      }
+    }
+    loadText("http://localhost:3000/home/index.json")
+</script> -->
+
+
+
+
+<!-- <h1>Listing shows</h1>
+<% if current_user.photo%>
+  <%= image_tag current_user.photo.url(:small) %>
+  <%end%>
+<%= link_to 'Booking history details', ticket_history_index_path %>
+<div id="div1">
+  <table id=mytable1 style="border-spacing: 35px; text-align: center; font-size: x-large;">
+    <thead>
+      <tr>
+        <th>Movie Name</th>
+        <th>Venue</th>
+        <th>Date&Timing</th>
+        <th>Ticket_Available</th>
+        <th>Price/Ticket</th>
+      </tr>
+    </thead>
+</div>
+<script>
+  async function loadText(fname) {
+
+      if (true) {
+    	var response = await fetch(fname)
+      var obj1 =  await response.json()
+      var obj=jQuery.parseJSON(obj1["show"])
+      var name=obj1["moviename"]
+      var r="<tbody>";
+        var str="book"
+      $("#mytable1").append(r);
+      for(var i=0;i<obj.length;i++)
+      {
+        var tr="<tr>";
+          var name1 = "<td>"+name[i]+"</td>";
+          var td1="<td>"+obj[i]["venue"]+"</td>";
+              var td2="<td>"+obj[i]["showtime"]+"</td>";
+              var td3="<td>"+obj[i]["ticket_available"]+"</td>";
+              var td4="<td>"+obj[i]["price"]+"</td>";
+              if (obj[i]["ticket_available"]>30){
+              var book='<td style="color:green;">'+str.link("/shows/"+obj[i]["id"]+"/bookings/new")+"</td></tr>";
+            }
+            else if(obj[i]["ticket_available"]<30 && obj[i]["ticket_available"]>10 )
+              {
+              var book='<td style="color:orange;">'+str.link("/shows/"+obj[i]["id"]+"/bookings/new")+"</td></tr>";
+            }
+            else
+            {
+              var book='<td style="color:red;>'+str.link("/shows/"+obj[i]["id"]+"/bookings/new")+"</td></tr>";
+            }
+              $("#mytable1").append(tr+name1+td1+td2+td3+td4+book);
+        }
+          var r="</tbody>";
+        $("#mytable1").append(r);
+      }
+      false
+    }
+    var hasBeenCalled;
+    debugger
+    if(hasBeenCalled == undefined){
+      hasBeenCalled = loadText("http://localhost:3000/home/index.json")
+    }
+</script> -->

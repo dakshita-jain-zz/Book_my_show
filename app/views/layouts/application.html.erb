@@ -12,10 +12,11 @@
       <p class="navbar-text">BOOK_MY_SHOW_APP</p>
       <% if User.current %>
         <% if User.current.admin? %>
-        <li><%= link_to 'Home',admin_index_path %></li>
+          <li><%= link_to 'Home',admin_index_path %></li>
         <% else %>
-        <li><%= link_to 'Home',home_index_path %></li>
-        <li><%= link_to 'Edit profile',edit_signup_path(User.current.id) %></li>
+          <li><%= image_tag current_user.photo.url(:small),:size => "60x52"%></li>
+          <li><%= link_to 'Home',home_index_path %></li>
+          <li><%= link_to 'Edit profile',edit_signup_path(User.current.id) %></li>
         <% end %>
 
       <% end %>
@@ -48,8 +49,8 @@
   </div>
   <footer class="footer">
 <small>
-  <a href="http://railstutorial.org/">Rails Tutorial</a>
-  by Michael Hartl
+  <a href="http://railstutorial.org/">Rails Tutorial     </a>
+  by Dakshita
 </small>
   </footer>
 </body>

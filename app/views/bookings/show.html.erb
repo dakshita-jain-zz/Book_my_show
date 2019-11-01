@@ -1,28 +1,48 @@
-<p>
-  <strong>Movie Name:</strong>
-  <%=@booking.show.movie.name%>
-</p>
+<style>
+  .style_image{
+    float: right;
+    padding: 10px;
+    width: 28%;
+    height: 28%;
+  }
+  .bb{
+  border: solid 3px black;
+    margin-top: 5%;
+    padding: 75px;
+  }
 
-<p>
-  <strong>User Name :</strong>
-  <%=@booking.user.name %>
+  .re{
+    color: black;
+    width: 380px;
+    font-size: large;
+    font-family: monospace;
+  }
+</style>
+<div class="bb">
+<%= image_tag("/qrcode.png" ,:size => "400x400",:class => "style_image")%>
+<p class="re">
+  <strong style="font-size:250%;"><%=@booking.show.movie.name%></strong>
 </p>
-
-<p>
-  <strong>No of tickets booked</strong>
+<p class="re">
+  <strong>No of tickets booked: </strong>
   <%= @booking.ticket_booked %>
 </p>
-<p>
-  <strong>Total Amount paid:</strong>
+<p class="re">
+  <strong>Total Amount paid: </strong>
   <%= @booking.total_amount %>
 </p>
-<p>
-  <strong>Booking Date and Time:</strong>
-  <%= @booking.booking_datetime %>
-</p>
-<p>
-  <strong>Payment Mode</strong>
+<p class="re">
+  <strong>Payment Mode: </strong>
   <%= @booking.payment_method %>
 </p>
-
+<p class ="re">
+  <strong>Ticket Issued to: <%=@booking.user.name %></strong>
+</p>
+<p class="re"">
+  <strong >Booking Done @ <%= @booking.booking_datetime.to_formatted_s(:long_ordinal) %></strong>
+</p>
+<h4 style="color:red; border:double padding:20px black;font-size:150%;font-family: cursive"> Get the qr scanned at the entry of the thearter for easy access!<h4>
+</div>
+<div>
 <%= link_to 'Back', home_index_path %>
+<div>

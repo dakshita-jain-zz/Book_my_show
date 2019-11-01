@@ -28,7 +28,11 @@
 </div>
 <div class="field">
   <%= f.label :rating%><br>
-  <%= f.number_field :rating %>
+  <%= f.radio_button :rating, 1 ,required: true%> 1<br />
+  <%= f.radio_button :rating, 2,required: true %> 2<br />
+  <%= f.radio_button :rating, 3,required: true %> 3<br />
+  <%= f.radio_button :rating, 4,required: true %> 4<br />
+  <%= f.radio_button :rating, 5,required: true %> 5<br/>
 </div>
   <div class="actions">
     <%= f.submit %>

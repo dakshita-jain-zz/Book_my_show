@@ -12,31 +12,59 @@
   <% end %>
   <div class="field">
     <%= f.label :name %><br>
-    <%= f.text_field :name %>
+    <%= f.text_field :name,required: true , id: "name",max: "50",pattern: ".{1,50}"%>
+    <span class="span1"></span>
   </div>
   <div class="field">
     <%= f.label :email %><br>
-    <%= f.text_field :email %>
+    <%= f.text_field :email ,required: true, placeholder: "xxxxx@yyyyyy.com",type: "email",id: "email" ,onblur: "validateField(this)" ,title: "email Id not Valid"%>
+    <span class="span1"></span>
   </div>
   <div class="field">
     <%= f.label :password %><br>
-    <%= f.password_field :password %>
+    <%= f.password_field :password, required: true,id: "Password"%>
+    <span class="span1"></span>
   </div>
   <div class="field">
     <%= f.label :password_confirmation %><br>
-    <%= f.password_field :password_confirmation %>
+    <%= f.password_field :password_confirmation,required: true,id: "PasswordConfirmation",onblur: "require1(this)",title: "Password doesnt match!" %>
+    <span class="span1"></span>
   </div>
+  <script>
+    function require1(value1) {
+      var x = document.getElementById("Password");
+      var y = document.getElementById("PasswordConfirmation");
+      if(x.value!==y.value){
+        value1.style.borderColor = "red";
+        var parent = value1.parentNode;
+        parent.getElementsByClassName("span1")[0].innerHTML = value1.title;
+      }
+    }
+
+    function validateField(field) {
+      if(!field.validity.valid) {
+        field.style.borderColor = "red";
+        var parent = field.parentNode;
+        parent.getElementsByClassName("span1")[0].innerHTML = field.title;
+      }
+    }
+</script>
   <div class="field">
     <%= f.label :age %><br>
-    <%= f.number_field :age %>
+    <%= f.number_field :age ,required:true,id: "age",min: "1",title: "Age should be greater than 1 !",onblur: "validateField(this)"%>
+    <span class="span1"></span>
   </div>
   <div class="field">
     <%= f.label :gender %><br>
-    <%= f.text_field :gender %>
+    <%= f.radio_button :gender, 'Male' ,required: true%> Male<br />
+    <%= f.radio_button :gender, 'Female',required: true %> Female<br />
+    <%= f.radio_button :gender, 'Other',required: true %> Other<br />
+    <span class="span1"></span>
   </div>
   <div class="field">
   <%= f.label :photo, "Photo" %>
-  <%= f.file_field :photo %>
+  <%= f.file_field :photo,required: true,id:  "picture" ,title: "Photo is a must!",onblur: "validateField(this)"%>
+  <span class="span1"></span>
   </div>
   <div class="actions">
     <%= f.submit %>

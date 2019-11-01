@@ -1,5 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+  #mytable,td{
+    width:0px;
+
+  }
+</style>
+</head>
 <h1>Listing All Movies currently showings!</h1>
-<table style="border-spacing: 35px; text-align: center; font-size: x-large;">
+<table id="mytable" style=" text-align: center; font-size: x-large">
   <thead>
     <tr>
       <th>Movie Name</th>
@@ -26,3 +36,4 @@
 
 <br>
 <%= link_to 'Add Movies',new_movie_path %>
+</html>

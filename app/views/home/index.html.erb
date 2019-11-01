@@ -1,34 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+  .div1{
+    display: none;
+  }
+  #mytable{
+    table-layout : fixed;
+  }
+  #mytable,td{
+    width: 0px;
+    padding: 20px;
+  }
+  .loader {
+    border: 16px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 16px solid #3498db;
+    width: 20px;
+    height: 20px;
+    -webkit-animation: spin 2s linear infinite; /* Safari */
+    animation: spin 2s linear infinite;
+  }
+
+  /* Safari */
+  @-webkit-keyframes spin {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+  }
+
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+</style>
+<script>
+  async function loadText(fname) {
+    	var response = await fetch(fname)
+      var obj1 =  await response.json()
+      var obj=jQuery.parseJSON(obj1["show"])
+      var name=obj1["moviename"]
+      var str1=''
+      for(var i=0;i<obj.length;i++)
+      {
+        var tr="<tr>";
+          var name1 = "<td>"+name[i]+"</td>";
+          var td1="<td>"+obj[i]["venue"]+"</td>";
+              var td2="<td>"+obj[i]["showtime"]+"</td>";
+              var td4="<td>"+obj[i]["price"]+"</td>";
+              if (obj[i]["ticket_available"]>30)
+              {
+              var book='<td><a href="/shows/'+obj[i]["id"]+'/bookings/new" style="color:green">BOOK</a></td>';
+            }
+            else if(obj[i]["ticket_available"]<30 && obj[i]["ticket_available"]>10 )
+              {
+              var book='<td><a href="/shows/'+obj[i]["id"]+'/bookings/new" style="color:orange">BOOK</a></td>';
+
+            }
+            else
+            {
+              var book='<td><a href="/shows/'+obj[i]["id"]+'/bookings/new" style="color:red">BOOK</a></td>'
+            }
+            str1=str1+name1+td1+td2+td4+book+"</tr>";
+            document.getElementById("tablebody").innerHTML=str1;
+
+        }
+
+        $(".loader").hide();
+        $(".div1").show();
+      }
+    loadText("http://localhost:3000/home/index.json")
+</script>
+</head>
+<body>
 <h1>Listing shows</h1>
-<% if @user.photo%>
-  <%= image_tag @user.photo.url(:small) %>
-  <%end%>
-<%= link_to 'Booking history', ticket_history_index_path %>
-<div>
-</div>
-<table style="border-spacing: 35px; text-align: center; font-size: x-large;">
-  <thead>
-    <tr>
-      <th>Movie</th>
-      <th>Venue</th>
-      <th>Date&Timing</th>
-      <th>Ticket_Available</th>
-      <th>Price/Ticket</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @shows.each do |show| %>
+<%= link_to 'Booking history details', ticket_history_index_path %>
+<div class="div1">
+  <table id=mytable1 style="text-align: center;font-size:x-large;width:1070px;border:black">
+    <thead>
       <tr>
-        <% debugger unless show.movie%>
-        <td><%= show.movie.name %></td>
-        <td><%= show.venue %></td>
-        <td><%= show.showtime.to_formatted_s(:long_ordinal) %></td>
-        <td><%= show.ticket_available %></td>
-        <td><%= show.price%></td>
-        <td><%= link_to 'book', new_show_booking_path(show_id: show.id) %></td>
+        <th>Movie Name</th>
+        <th>Venue</th>
+        <th>Date&Timing</th>
+        <th>Price/Ticket</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
+    </thead>
+    <tbody id="tablebody">
+    </tbody>
+    </table>
+  </div>
+  <div class="loader">
+  </div>
+</body>
+</html>
